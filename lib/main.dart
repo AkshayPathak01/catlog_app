@@ -1,5 +1,6 @@
 import 'package:catlog_app/pages/home_page.dart';
 import 'package:catlog_app/pages/login_page.dart';
+import 'package:catlog_app/utils/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -12,10 +13,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // buildcontext create a tree
     return MaterialApp(
-      themeMode: ThemeMode.system, // use system ,dark ,light
+      debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.light, // use system ,dark ,light
       theme: ThemeData(
         // when u use light theme then theme use
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.deepPurple,
         fontFamily: GoogleFonts.lato().fontFamily,
       ),
       darkTheme: ThemeData(
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => new LoginPage(), // "/" by default screen of app
-        "/home": (context) =>
+        MyRoutes.loginRoutes: (context) =>
+            new LoginPage(), // create object of class with new keyword not complusary
+        MyRoutes.homeRoutes: (context) =>
             new HomePage(), // create object of class with new keyword not complusary
       },
     );
