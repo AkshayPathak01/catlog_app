@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         // when u use dark theme then darktheme use
         brightness: Brightness.dark,
       ),
-      initialRoute: "/",
+      initialRoute: MyRoutes.homeRoutes,
       routes: {
         "/": (context) => new LoginPage(), // "/" by default screen of app
         MyRoutes.loginRoutes: (context) =>
