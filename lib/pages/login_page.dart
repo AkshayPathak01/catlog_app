@@ -13,12 +13,28 @@ class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool cButton = false;
   final _formKey = GlobalKey<FormState>();
+  movrToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        cButton = true;
+      });
+      await Future.delayed(
+        Duration(seconds: 1),
+      );
+      await Navigator.pushNamed(context, MyRoutes.homeRoutes);
+      setState(() {
+        cButton = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
       child: SingleChildScrollView(
         child: Form(
+          key: _formKey,
           child: Column(
             children: [
               Image.asset(
@@ -48,6 +64,12 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: " Enter Email ",
                           labelText: "Email",
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Username Cannot be Empty";
+                          }
+                          return null;
+                        },
                         onChanged: (val) {
                           name = val;
                           setState(() {});
@@ -59,6 +81,14 @@ class _LoginPageState extends State<LoginPage> {
                           hintText: " Enter Password ",
                           labelText: "Password",
                         ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Password Cannot be Empty";
+                          } else if (value.length < 6) {
+                            return "Password length should be atleast 6";
+                          }
+                          return null;
+                        },
                       ),
                       SizedBox(
                         height: 40.0,
@@ -68,19 +98,7 @@ class _LoginPageState extends State<LoginPage> {
                         borderRadius:
                             BorderRadius.circular(cButton ? 50.0 : 9.0),
                         child: InkWell(
-                          onTap: () async {
-                            setState(() {
-                              cButton = true;
-                            });
-                            await Future.delayed(
-                              Duration(seconds: 1),
-                            );
-                            await Navigator.pushNamed(
-                                context, MyRoutes.homeRoutes);
-                            setState(() {
-                              cButton = false;
-                            });
-                          },
+                          onTap: () => movrToHome(context),
                           child: AnimatedContainer(
                             duration: Duration(seconds: 1),
                             width: cButton ? 50 : 150,
@@ -102,15 +120,6 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
-                      /*ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushNamed(context, MyRoutes.homeRoutes);
-                        },
-                        child: Text("Login"),
-                        style: TextButton.styleFrom(
-                          minimumSize: Size(150, 40),
-                        ),
-                      )*/
                     ],
                   ))
             ],
