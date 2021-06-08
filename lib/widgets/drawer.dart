@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final imageUrl = "";
+    final imageUrl =
+        "https://pbs.twimg.com/profile_images/1298193390723452928/Mz8JN76p_400x400.jpg";
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -15,9 +16,9 @@ class MyDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             margin: EdgeInsets.zero,
             child: UserAccountsDrawerHeader(
-              decoration: BoxDecoration(color: Colors.deepPurpleAccent),
+              decoration: BoxDecoration(color: Colors.deepPurple),
               currentAccountPicture: CircleAvatar(
-                backgroundColor: Colors.white,
+                //backgroundColor: Colors.white,
                 backgroundImage: NetworkImage(imageUrl),
               ),
               margin: EdgeInsets.zero,
@@ -30,13 +31,36 @@ class MyDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               CupertinoIcons.home,
-              color: Colors.deepPurple,
+              color: Colors.black,
             ),
             title: Text(
               "Home",
-              style: TextStyle(color: Colors.deepPurple),
+              textScaleFactor: 1.3,
+              style: TextStyle(color: Colors.black),
             ),
-          )
+          ),
+          ListTile(
+            leading: Icon(
+              CupertinoIcons.profile_circled,
+              color: Colors.black,
+            ),
+            title: Text(
+              "Profile",
+              textScaleFactor: 1.3,
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
+          ListTile(
+            leading: Icon(
+              CupertinoIcons.mail,
+              color: Colors.black,
+            ),
+            title: Text(
+              "Mail Me",
+              textScaleFactor: 1.3,
+              style: TextStyle(color: Colors.black),
+            ),
+          ),
         ],
       ),
     );
