@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:catlog_app/Model/catlog.dart';
 import 'package:catlog_app/widgets/ItemWidget.dart';
 import 'package:catlog_app/widgets/drawer.dart';
@@ -17,14 +19,21 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
-    var catlogJson = await rootBundle.loadString("assets/files/catloJson.json");
-    print(catlogJson);
+    await Future.delayed(Duration(seconds: 1));
+    final catlogJson =
+        await rootBundle.loadString("assets/files/catloJson.json");
+    final decodeData = jsonDecode(catlogJson);
+    var productData = decodeData["products"]; // value in map
+
+    CatalogModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
+    //print(decodeData);
+    //print(catlogJson);
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList = List.generate(5, (index) => CatalogModel.items[0]);
-
     return Scaffold(
       appBar: AppBar(
         // backgroundColor: Colors.white,
@@ -39,14 +48,17 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: dummyList.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: dummyList[index],
-            );
-          },
-        ),
+        child: (CatalogModel.items != null && CatalogModel.items!.isNotEmpty)
+            ? ListView.builder(
+              
+                itemCount: CatalogModel.items!.length,
+                itemBuilder: (context, index) => ItemWidget(
+                  item: CatalogModel.items![index],
+                ),
+              )
+            : Center(
+                child: CircularProgressIndicator(),
+              ),
       ),
       // bottomNavigationBar: BottomAppBar(),
       drawer: MyDrawer(),
