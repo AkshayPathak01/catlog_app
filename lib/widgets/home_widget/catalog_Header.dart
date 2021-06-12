@@ -12,7 +12,7 @@ class CatlogHeader extends StatelessWidget {
             .text
             .xl5
             .bold
-            .color(MyTheme.darkBlue)
+            .color(context.theme.accentColor)
             .make(), //xl5 size of text
         "Trending products".text.xl2.make(),
       ],

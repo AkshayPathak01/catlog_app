@@ -15,9 +15,9 @@ class HomeDetailPages extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
-      backgroundColor: MyTheme.creamColor,
+      backgroundColor: context.canvasColor,
       bottomNavigationBar: Container(
-        color: Colors.white,
+        color: context.cardColor,
         child: ButtonBar(
           alignment: MainAxisAlignment.spaceBetween,
           buttonPadding: EdgeInsets.zero,
@@ -25,14 +25,15 @@ class HomeDetailPages extends StatelessWidget {
             "\$${catalog.price}".text.bold.xl4.red800.make(),
             ElevatedButton(
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(MyTheme.darkBlue),
+                backgroundColor:
+                    MaterialStateProperty.all(context.theme.buttonColor),
                 shape: MaterialStateProperty.all(
                   StadiumBorder(),
                 ),
               ),
               onPressed: () {},
-              child: "Buy".text.make(),
-            ).wh(100, 50)
+              child: "Add to cart".text.make(),
+            ).wh(120, 50)
           ],
         ).p32(),
       ),
@@ -54,7 +55,7 @@ class HomeDetailPages extends StatelessWidget {
                       child: Column(
                         children: [
                           catalog.name.text.xl4
-                              .color(MyTheme.darkBlue)
+                              .color(context.accentColor)
                               .bold
                               .make(),
                           catalog.desc.text
@@ -66,9 +67,10 @@ class HomeDetailPages extends StatelessWidget {
                               .text
                               .textStyle(context.captionStyle)
                               .make()
+                              .p16()
                         ],
                       ).py64(),
-                      color: Colors.white,
+                      color: context.cardColor,
                     )))
           ],
         ),

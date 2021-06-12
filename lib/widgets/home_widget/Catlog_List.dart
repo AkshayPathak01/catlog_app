@@ -38,14 +38,15 @@ class CatlogItem extends StatelessWidget {
     return VxBox(
       child: Row(
         children: [
-          Hero(tag: Key(catlog.id.toString()),
-          child: CatlogImage(image: catlog.image)),
+          Hero(
+              tag: Key(catlog.id.toString()),
+              child: CatlogImage(image: catlog.image)),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                catlog.name.text.lg.color(MyTheme.darkBlue).bold.make(),
+                catlog.name.text.lg.color(context.accentColor).bold.make(),
                 catlog.desc.text.textStyle(context.captionStyle).make(),
                 10.heightBox,
                 ButtonBar(
@@ -56,13 +57,13 @@ class CatlogItem extends StatelessWidget {
                     ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor:
-                            MaterialStateProperty.all(MyTheme.darkBlue),
+                            MaterialStateProperty.all(context.theme.buttonColor),
                         shape: MaterialStateProperty.all(
                           StadiumBorder(),
                         ),
                       ),
                       onPressed: () {},
-                      child: "Buy".text.make(),
+                      child: "Add to cart".text.make(),
                     )
                   ],
                 ).pOnly(right: 8.0)
@@ -71,6 +72,6 @@ class CatlogItem extends StatelessWidget {
           )
         ],
       ),
-    ).white.rounded.square(150).make().py16();
+    ).color(context.cardColor).rounded.square(150).make().py16();
   }
 }
