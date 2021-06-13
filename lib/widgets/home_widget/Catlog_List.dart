@@ -56,8 +56,8 @@ class CatlogItem extends StatelessWidget {
                     "\$${catlog.price}".text.bold.xl.make(),
                     ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.all(context.theme.buttonColor),
+                        backgroundColor: MaterialStateProperty.all(
+                            context.theme.buttonColor),
                         shape: MaterialStateProperty.all(
                           StadiumBorder(),
                         ),
