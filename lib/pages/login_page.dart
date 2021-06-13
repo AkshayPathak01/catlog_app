@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
               Text(
                 "Welcome $name",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: context.theme.accentColor,
                     fontSize: 24,
                     fontWeight: FontWeight.bold),
               ),
