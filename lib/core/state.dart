@@ -3,7 +3,7 @@ import 'package:velocity_x/velocity_x.dart';
 import 'package:catlog_app/Model/cart.dart';
 import 'package:catlog_app/Model/catlog.dart';
 
-class MyStore extends VxState {
+class MyStore extends VxStore {
   CatalogModel catalog;
   CartModel cart;
   MyStore(

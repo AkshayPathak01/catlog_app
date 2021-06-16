@@ -9,9 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:catlog_app/Model/catlog.dart';
-import 'package:catlog_app/widgets/ItemWidget.dart';
-import 'package:catlog_app/widgets/drawer.dart';
-import 'package:catlog_app/widgets/themes.dart';
 
 class HomePage extends StatefulWidget {
   @override
