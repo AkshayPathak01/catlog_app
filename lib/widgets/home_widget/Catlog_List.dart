@@ -1,8 +1,6 @@
-import 'package:catlog_app/Model/cart.dart';
 import 'package:catlog_app/pages/home_det_pages.dart';
 import 'package:velocity_x/velocity_x.dart';
 import 'package:catlog_app/Model/catlog.dart';
-import 'package:catlog_app/widgets/themes.dart';
 import 'package:flutter/material.dart';
 import 'Catlog_Image.dart';
 import 'add_to_cart.dart';
